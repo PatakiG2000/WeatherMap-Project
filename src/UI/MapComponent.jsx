@@ -10,14 +10,14 @@ const marker = "https://cdn-icons-png.flaticon.com/512/443/443025.png";
 const myIcon = new L.Icon({
   iconUrl: marker,
   iconRetinaUrl: marker,
-  popupAnchor: [-0, -0],
+  popupAnchor: [-10, -0],
   iconSize: [32, 45],
 });
 
 function DraggableMarker(props) {
   ///leaflet map
   const [draggable, setDraggable] = React.useState(false);
-  const [position, setPosition] = React.useState();
+  const [position, setPosition] = React.useState([12, 43]);
 
   const markerRef = React.useRef(null);
   const eventHandlers = React.useMemo(

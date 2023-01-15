@@ -3,11 +3,16 @@ import Header from "./Layout/Headerr";
 import MainInfo from "./Layout/MainInfo";
 import Global from "./Layout/Global";
 
+import weatherkey from "./Helper/key";
+import pexelkey from "./Helper/keys";
 import { createClient } from "pexels";
 
 import "./App.css";
 
 function App() {
+  ////for pexel api
+  const client = createClient(pexelkey);
+
   //view: oneday, tomorrow, and sevenday
   const [view, setView] = React.useState("today");
 
@@ -29,7 +34,7 @@ function App() {
       sunset: 4248545,
     },
     coord: {
-      lon: -0.1257,
+      lon: -0.157,
       lat: 51.5085,
     },
     utc_offset_seconds: 3600,
@@ -58,15 +63,11 @@ function App() {
   const [errorState, setErrorState] = React.useState(false);
 
   const API_KEY = process.env.REACT_APP__API_KEY_WEATHER;
-  const PEXEL_KEY = process.env.REACT_APP_API_KEY_PEXEL;
-
-  ////for pexel api
-  const client = createClient(PEXEL_KEY);
 
   //searching for the provided city to get positions for the weather api
   React.useEffect(
     function () {
-      fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchterm}&limit=5&appid=${API_KEY}
+      fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchterm}&limit=5&appid=${weatherkey}
   `)
         .then((res) => res.json())
         .then((data) => {
@@ -86,7 +87,7 @@ function App() {
   React.useEffect(
     function () {
       try {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&appid=${API_KEY}
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&appid=${weatherkey}
         `)
           .then((res) => res.json())
           .then((data) => {
