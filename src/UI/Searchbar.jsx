@@ -9,7 +9,6 @@ export default function Searchbar(props) {
     setSearchState(event.target.value);
   }
 
-
   return (
     <form
       className={classes.bardiv}
@@ -19,7 +18,7 @@ export default function Searchbar(props) {
       }}
     >
       <img
-        src="src\assets\search-icon.png"
+        src={require("../assets/search-icon.png")}
         alt="Icon"
         className={classes["search-icon"]}
       />

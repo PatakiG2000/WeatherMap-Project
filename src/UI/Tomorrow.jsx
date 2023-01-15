@@ -27,7 +27,7 @@ export default function Tomorrow(props) {
         </div>
         <div className="main-icon">
           <img
-            src={`../${weatherIcon} `}
+            src={weatherIcon}
             alt="Icon of weather"
             className="weather-icon"
           />

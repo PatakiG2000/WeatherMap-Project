@@ -1,31 +1,31 @@
 export default function handleWeatherIcons(weatherCode) {
   if (weatherCode < 9) {
-    return "src/assets/sunicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/869/869869.png";
   }
 
   if (9 < weatherCode && weatherCode < 21) {
-    return "src/assets/fogicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/3750/3750506.png";
   }
   if (20 < weatherCode && weatherCode < 31) {
-    return "src/assets/rainicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/2469/2469994.png";
   }
 
   if (30 < weatherCode && weatherCode < 41) {
-    return "src/assets/blowingsnowicon.png";
+    return "https://cdn-icons-png.flaticon.com/128/8841/8841398.png";
   }
   if (40 < weatherCode && weatherCode < 51) {
-    return "src/assets/fogicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/2469/2469994.png";
   }
   if (50 < weatherCode && weatherCode < 61) {
-    return "src/assets/rainicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/2469/2469994.png";
   }
   if (60 < weatherCode && weatherCode < 71) {
-    return "src/assets/rainicon.png";
+    return "https://cdn-icons-png.flaticon.com/512/2469/2469994.png";
   }
   if (70 < weatherCode && weatherCode < 81) {
-    return "src/assets/snow.png";
+    return "https://cdn-icons-png.flaticon.com/512/2315/2315309.png";
   }
   if (80 < weatherCode && weatherCode < 100) {
-    return "src/assets/storm.png";
+    return "https://cdn-icons-png.flaticon.com/512/2864/2864448.png";
   }
 }

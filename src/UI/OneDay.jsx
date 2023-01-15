@@ -48,7 +48,7 @@ export default function OneDay(props) {
         </div>
         <div className="main-icon">
           <img
-            src={`../${weatherIcon} `}
+            src={weatherIcon}
             alt="Icon of weather"
             className="weather-icon"
           />
@@ -59,7 +59,11 @@ export default function OneDay(props) {
         <div className="first-detailed-data">
           <h2 className="daily-data">Daily min: {minTemp} </h2>
           <h2 className="daily-data">
-            Daily max: {maxTemp} || <span className="attribute"> Background image by: {props.attribution}</span>
+            Daily max: {maxTemp} ||{" "}
+            <span className="attribute">
+              {" "}
+              Background image by: {props.attribution}, Icons by: FlatIcon
+            </span>
           </h2>
         </div>
         <div className="second-detailed-data">

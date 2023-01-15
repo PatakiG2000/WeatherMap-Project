@@ -41,8 +41,8 @@ function App() {
   });
 
   const [geoData, setGeoData] = React.useState({
-    lat: 51.5156177,
-    lon: -0.0919983,
+    lat: -0.0919983,
+    lon: 51.5156177,
   });
 
   const [forecast, setForecast] = React.useState({
@@ -173,7 +173,7 @@ function App() {
           information={weather}
           forecast={forecast}
           background={backgroundImage}
-          attribution={attribution} 
+          attribution={attribution}
         />
       </div>
       <Global dataForMap={weather} draggerSearch={handleDraggerSearch} />

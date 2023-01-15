@@ -13,25 +13,25 @@ export default function ForecastCards(props) {
     props.forecast.daily.weathercode[props.index]
   );
 
+  const bgImage = handleForecastImage(
+    props.forecast.daily.weathercode[props.index]
+  );
+
   return (
-    <div className="container" >
-      <div className="weather-card" >
-        
+    <div className="container">
+      <div className="weather-card">
         <div
           className="image-section"
           style={{
-            backgroundImage: `url(./src/assets/sevenday-${handleForecastImage(
-              props.forecast.daily.weathercode[props.index]
-            )}.jpg)`,
+            backgroundImage: `url(${bgImage})`,
           }}
         >
           <img
-            src={`../${weatherIcon}`}
+            src={weatherIcon}
             alt="Icon of weather"
             className="forecast-card-icon"
-            
           />
-          <div className="layer" ></div>
+          <div className="layer"></div>
           <div className="weather"></div>
           <small className="type">{weatherType} </small>
         </div>
@@ -42,7 +42,10 @@ export default function ForecastCards(props) {
               <span className="deg">&deg;</span>
             </h1>
             <h3>{props.information.name} </h3>
-            <small>{props.forecast.daily.time[props.index]} </small>
+            <small>
+              {props.forecast.daily.time[props.index]}
+            </small>
+            <small>|Image from: Unsplash</small>
           </div>
         </div>
       </div>

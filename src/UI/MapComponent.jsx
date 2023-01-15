@@ -3,6 +3,17 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+import L from "leaflet";
+
+const marker = "https://cdn-icons-png.flaticon.com/512/443/443025.png";
+
+const myIcon = new L.Icon({
+  iconUrl: marker,
+  iconRetinaUrl: marker,
+  popupAnchor: [-0, -0],
+  iconSize: [32, 45],
+});
+
 function DraggableMarker(props) {
   ///leaflet map
   const [draggable, setDraggable] = React.useState(false);
@@ -33,6 +44,7 @@ function DraggableMarker(props) {
       eventHandlers={eventHandlers}
       position={props.position}
       ref={markerRef}
+      icon={myIcon}
     >
       <Popup minWidth={90}>
         <span onClick={toggleDraggable}>
