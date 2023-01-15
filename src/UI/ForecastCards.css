@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 330px;
+  width: 30%;
+  cursor: pointer;
+  transition: 300ms;
+  
+  
+}
+
+.container:hover {
+  transform: scale(1.2);
+  margin-right: 20px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
+.image-section img {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  
+ 
+}
+
+.weather-card {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  
+}
+.weather-card .image-section {
+  height: 54%;
+  position: relative;
+  background-size: 100%;
+
+  
+}
+
+
+
+.weather-card .image-section .type {
+  text-transform: uppercase;
+  color: #ffffff;
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  z-index: 9;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.weather-card .info-section {
+  height: 47%;
+  background: rgba(8, 8, 8, 0.473);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.contents {
+  z-index: 9;
+  text-align: center;
+ 
+}
+
+.forecast-card-icon {
+  width: 40%;
+
+}
+.contents h1 {
+  margin: 20px;
+  font-size: 70px;
+  line-height: 50px;
+  font-weight: 100;
+  position: relative;
+  color: #868383;
+}
+.contents h1 .deg {
+  position: absolute;
+  top: -15px;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+.contents h3 {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #908e8e;
+  font-size: 16px;
+}
+.contents small {
+  color: #908e8e;
+ 
+}
+@-moz-keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(359deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(359deg);
+  }
+}

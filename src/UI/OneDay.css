@@ -1,0 +1,85 @@
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  height: 350px;
+  width: 100%;
+  font-family: "Roboto";
+  justify-content: center;
+  border-radius: 60px;
+  overflow: hidden;
+  transition: all 500ms;
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-data {
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  height: 250px;
+
+  backdrop-filter: blur(3px) brightness(90%);
+
+  transition: all 500ms;
+}
+
+.main-data:hover {
+  cursor: pointer;
+  backdrop-filter: none;
+}
+
+.detailed-data {
+  background-color: rgba(0, 0, 0, 0.822);
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 14px;
+  backdrop-filter: blur(3px);
+}
+
+.weather-icon {
+  width: 140px;
+  margin-top: 30px;
+}
+
+.main-text {
+  margin-left: 40px;
+}
+
+.city-name {
+  font-size: 40px;
+  letter-spacing: 5px;
+  border-bottom: 1px solid white;
+}
+
+.weather-type {
+  font-size: 20px;
+  margin-top: -25px;
+  font-weight: 400;
+}
+
+.temperature {
+  font-size: 50px;
+  margin-top: -8px;
+}
+
+.feels-like {
+  margin-top: -30px;
+  font-weight: 400;
+}
+
+.time {
+  margin-right: 40px;
+}
+
+.daily-data {
+  font-weight: 400;
+}
+
+.attribute {
+  font-size: 12px;
+}

@@ -1,0 +1,37 @@
+.bardiv {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  
+}
+
+.search-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+}
+
+.search {
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 150px;
+  height: 45px;
+  width: 500px;
+  padding: 2px 23px 2px 50px;
+  outline: 0;
+  background-color: #222222;
+  color: rgb(219, 218, 218);
+  transition: 500ms;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.search:hover,
+.search:focus {
+  background-color: rgb(73, 73, 73);
+}
+
+.search-icon:hover {
+  cursor: pointer;
+}

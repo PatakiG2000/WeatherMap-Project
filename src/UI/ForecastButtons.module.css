@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 500ms;
+}
+
+.container button {
+  cursor: pointer;
+  border: none;
+  font-size: 25px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 300ms;
+  color: gray;
+  margin-right: 4px;
+}
+
+.container button:hover {
+  color: rgba(255, 255, 255, 0.589);
+}
+
+.active {
+  color: white !important;
+}

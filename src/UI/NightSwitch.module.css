@@ -1,0 +1,20 @@
+
+.container p {
+  font-weight: 700;
+}
+
+.container p a {
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+.link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.938);
+  transition: all 500ms;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.295);
+}
+
+.link:hover {
+  color: lightblue;
+}
