@@ -21,7 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 src/Helper/keys.js
 src/Helper/key.js
 src/Helper/key.js
 src/Helper/keys.js
+=======
+>>>>>>> parent of 2f11af8 (Update)
