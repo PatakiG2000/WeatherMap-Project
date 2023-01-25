@@ -6,7 +6,7 @@ export default function CurrentPlace(props) {
   return (
     <div className={classes.placediv}>
       <img src={require("../assets/pinpoint.png")} alt="Pinpoint" />
-      <h1> {props.place.name} </h1>
+      <h1> {'props.place.name'} </h1>
     </div>
   );
 }

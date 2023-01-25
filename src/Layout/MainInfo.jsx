@@ -7,7 +7,7 @@ import Tomorrow from "../UI/Tomorrow.jsx";
 
 export default function MainInfo(props) {
   //passing data down from here to the "main" components
-  const forecastArr = props.forecast.daily.weathercode
+  /*   const forecastArr = props.forecast.daily.weathercode
     ? props.forecast.daily.weathercode
     : [0, 0, 0, 0, 0, 0, 0];
 
@@ -19,29 +19,28 @@ export default function MainInfo(props) {
         index={i}
       />
     );
-  });
+  }); */
 
   return (
     <div>
       <ForecastButtons handler={props.viewHandler} />
-      <div className={classes.information}>
-        {props.view === "today" && (
+      <div className={"classes.information"}>
+        {props.view === "oneday" && (
           <OneDay
-            daily={props.information}
-            forecast={props.forecast}
-            background={props.background}
-            attribution={props.attribution}
+            daily={"props.information"}
+            forecast={"props.forecast"}
+            background={"props.background"}
+            attribution={"props.attribution"}
           />
         )}
         {props.view === "tomorrow" && (
           <Tomorrow
-            forecast={props.forecast}
-            infos={props.information}
-            background={props.background}
+            forecast={"props.forecast"}
+            infos={"props.information"}
+            background={"props.background"}
           />
         )}
-
-        {props.view === "sevenday" && sevenDay}
+        {props.view === "sevenday" && <ForecastCards />} */
       </div>
     </div>
   );

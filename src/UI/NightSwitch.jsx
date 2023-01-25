@@ -6,7 +6,12 @@ export default function NightSwitch() {
     <div className={classes.container}>
       <p>
         App by:{" "}
-        <a href="https://github.com/PatakiGergo" target="_blank" className={classes.link}>
+        <a
+          href="https://github.com/PatakiGergo"
+          target="_blank"
+          className={classes.link}
+          rel="noopener noreferrer"
+        >
           {" "}
           Pataki Gergo
         </a>

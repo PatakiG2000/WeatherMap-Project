@@ -1,6 +1,5 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import L from "leaflet";
@@ -30,7 +29,7 @@ function DraggableMarker(props) {
         }
       },
     }),
-    []
+    [props]
   );
   const toggleDraggable = React.useCallback(() => {
     setDraggable((d) => !d);
@@ -58,7 +57,7 @@ function DraggableMarker(props) {
 }
 
 export default function MapChart(props) {
-  const position = [props.mapdata.coord.lat, props.mapdata.coord.lon];
+  const position = [/* props.mapdata.coord.lat, props.mapdata.coord.lon */0,0];
 
   return (
     <div className="map" id="map">
@@ -70,7 +69,7 @@ export default function MapChart(props) {
         />
 
         <DraggableMarker
-          dragSearch={props.handleDraggerSearch}
+          dragSearch={'props.handleDraggerSearch'}
           position={position}
         ></DraggableMarker>
       </MapContainer>
