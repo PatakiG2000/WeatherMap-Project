@@ -35,8 +35,6 @@ function DraggableMarker(props) {
     setDraggable((d) => !d);
   }, []);
 
-
-
   return (
     <Marker
       draggable={draggable}
@@ -57,7 +55,10 @@ function DraggableMarker(props) {
 }
 
 export default function MapChart(props) {
-  const position = [/* props.mapdata.coord.lat, props.mapdata.coord.lon */0,0];
+  const position = [
+    props.mapdata.geoData[0]?.lat ? props.mapdata.geoData[0]?.lat : 51.5073219,
+    props.mapdata.geoData[0]?.lon ? props.mapdata.geoData[0]?.lon : -0.1276474,
+  ];
 
   return (
     <div className="map" id="map">
@@ -69,7 +70,7 @@ export default function MapChart(props) {
         />
 
         <DraggableMarker
-          dragSearch={'props.handleDraggerSearch'}
+          dragSearch={"props.handleDraggerSearch"}
           position={position}
         ></DraggableMarker>
       </MapContainer>
