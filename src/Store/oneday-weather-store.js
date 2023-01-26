@@ -15,6 +15,7 @@ const useWeatherData = create((set) => ({
       temp_min: "",
       temp_max: "",
     },
+    timezone: 0,
     wind: {
       speed: "",
     },

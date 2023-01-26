@@ -35,7 +35,7 @@ function DraggableMarker(props) {
     setDraggable((d) => !d);
   }, []);
 
-  console.log(position);
+
 
   return (
     <Marker
