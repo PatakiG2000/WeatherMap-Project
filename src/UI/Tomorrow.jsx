@@ -2,32 +2,47 @@ import React from "react";
 import "./OneDay.css";
 import handleWeatherCode from "../utils/weatherCode";
 import handleWeatherIcons from "../utils/weatherIcons";
+import useBackgroundImage from "../Store/pexels-store";
+import useForecastData from "../Store/forecast-store";
+import useGeoData from "../Store/geo-store";
+import useWeatherData from "../Store/oneday-weather-store";
 
 export default function Tomorrow(props) {
+  const backgroundImagePexels = useBackgroundImage();
+  const forecast = useForecastData();
+  const geoStore = useGeoData();
+  const weatherStore = useWeatherData();
   //handling icons with the weathercode provided
-  /* const weatherType = handleWeatherCode(props.forecast.daily.weathercode[1]);
-  const weatherIcon = handleWeatherIcons(props.forecast.daily.weathercode[1]); */
+  const weatherType = handleWeatherCode(
+    forecast.forecastData.daily.weathercode[1]
+  );
+  const weatherIcon = handleWeatherIcons(
+    forecast.forecastData.daily.weathercode[1]
+  );
 
   return (
     <div
       className="weather-container"
       style={{
-        backgroundImage: `url(${'props.background'} )`,
+        backgroundImage: `url(${backgroundImagePexels.imageUrl} )`,
       }}
     >
       <div className="main-data">
         <div className="main-text">
-          <h1 className="city-name">{props.infos.name} </h1>
-          <h2 className="weather-type">{'weatherType'}</h2>
-          <h1 className="temperature">
-            {'props.forecast.daily.temperature_2m_max[1]'}
-            {"°C "}
+          <h1 className="city-name">
+            {weatherStore.geoData.name
+              ? weatherStore.geoData.name
+              : geoStore.geoData[0].name}
           </h1>
-          <h3>Wind: {'props.forecast.daily.windspeed_10m_max[1]'} km/h</h3>
+          <h2 className="weather-type">{weatherType}</h2>
+          <h1 className="temperature">
+            {forecast.forecastData.daily.temperature_2m_max[1] + "°C"}
+          </h1>
+          <h3>Wind: {forecast.forecastData.daily.windspeed_10m_max[1]} km/h</h3>
         </div>
         <div className="main-icon">
           <img
-            src={'weatherIcon'}
+            src={weatherIcon}
             alt="Icon of weather"
             className="weather-icon"
           />
@@ -37,10 +52,11 @@ export default function Tomorrow(props) {
       <div className="detailed-data">
         <div className="first-detailed-data">
           <h2 className="daily-data">
-            Daily min: {'props.forecast.daily.temperature_2m_min[1]}°C'}
+            Daily min:{" "}
+            {forecast.forecastData.daily.temperature_2m_min[1] + "°C"}
           </h2>
           <h2 className="daily-data">
-            Daily max: {'props.forecast.daily.temperature_2m_max[1]'}°C
+            Daily max: {forecast.forecastData.daily.temperature_2m_max[1]}°C
           </h2>
         </div>
         <div className="second-detailed-data">

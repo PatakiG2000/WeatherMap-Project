@@ -14,3 +14,10 @@
     opacity: 50%;
     margin-right: 5px;
 }
+
+@media (max-width: 977px) {
+    .placediv{
+      display: none;
+    }
+  }
+  

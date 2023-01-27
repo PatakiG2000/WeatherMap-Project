@@ -26,10 +26,15 @@ const useWeatherData = create((set) => ({
   },
   fetchGeoData: async (position) => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${position.geoData[0].lat}&lon=${position.geoData[0].lon}&appid=2653eef7dd1d751b628c8dc1bdbe14a3`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${
+        position[0] || position.geoData[0].lat
+      }&lon=${
+        position[1] || position.geoData[0].lon
+      }&appid=2653eef7dd1d751b628c8dc1bdbe14a3`
     );
     set({ geoData: await response.json() });
   },
+  fetchDatabyMap: () => {},
 }));
 
 /* const useForecastDataZustand = create((set) => ({

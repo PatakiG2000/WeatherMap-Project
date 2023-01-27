@@ -17,6 +17,7 @@ const useGeoData = create((set) => ({
       `https://api.openweathermap.org/geo/1.0/direct?q=${searchterm}&limit=5&appid=2653eef7dd1d751b628c8dc1bdbe14a3`
     );
     set({ geoData: await response.json() });
+    
   },
 }));
 

@@ -10,7 +10,7 @@ export default function MainInfo(props) {
   const forecast = useForecastData();
 
 
-  const forecastTimeArr = forecast.forecastData.daily.time
+  const forecastTimeArr = forecast.forecastData.daily?.time
 
   const sevenDay = forecastTimeArr.map((item, i) => {
     return (
@@ -41,7 +41,7 @@ export default function MainInfo(props) {
             background={"props.background"}
           />
         )}
-        {props.view === "sevenday" && sevenDay} */
+        {props.view === "sevenday" && sevenDay} 
       </div>
     </div>
   );

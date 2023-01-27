@@ -14,7 +14,11 @@ const useForecastData = create((set) => ({
   },
   fetchForecastData: async (position) => {
     const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${position.geoData[0].lat}&longitude=${position.geoData[0].lon}&&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,snowfall_sum,windspeed_10m_max&timezone=auto`
+      `https://api.open-meteo.com/v1/forecast?latitude=${
+        position[0] || position.geoData[0].lat
+      }&longitude=${
+        position[1] || position.geoData[0].lon
+      }&&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,snowfall_sum,windspeed_10m_max&timezone=auto`
     );
     set({ forecastData: await response.json() });
   },

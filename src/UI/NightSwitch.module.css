@@ -18,3 +18,9 @@
 .link:hover {
   color: lightblue;
 }
+
+@media (max-width: 977px) {
+  .container {
+    padding: 0;
+  }
+}

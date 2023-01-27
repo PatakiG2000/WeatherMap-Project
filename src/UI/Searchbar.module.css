@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   max-width: 100%;
-  
 }
 
 .search-icon {
@@ -34,4 +33,16 @@
 
 .search-icon:hover {
   cursor: pointer;
+}
+
+@media (max-width: 977px) {
+  .bardiv {
+    max-width: 80%;
+  }
+
+  .search {
+    height: 45px;
+    width: 400px;
+    font-size: 20px;
+  }
 }

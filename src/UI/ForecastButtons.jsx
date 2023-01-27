@@ -15,7 +15,7 @@ export default function ForecastButtons(props) {
       <div>
         <button
           onClick={() => handleClick("oneday")}
-          className={selected === "today" ? classes.active : '""'}
+          className={selected === "oneday" ? classes.active : '"false"'}
         >
           Today
         </button>

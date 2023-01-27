@@ -10,9 +10,9 @@ export default function CurrentPlace(props) {
       <img src={require("../assets/pinpoint.png")} alt="Pinpoint" />
       <h1>
         {" "}
-        {locationName.geoData.name
-          ? locationName.geoData.name
-          : locationName.geoData[0].name}{" "}
+        {locationName.geoData?.name
+          ? locationName.geoData?.name
+          : locationName.geoData[0]?.name}{" "}
       </h1>
     </div>
   );
