@@ -13,7 +13,7 @@ export default function ForecastCards(props) {
   const weatherStore = useWeatherData()
   //handling the different weathers by it's position in the array provided
   const weatherType = handleWeatherCode(
-    forecast.forecastData.daily.weathercode[props.index]
+    forecast.forecastData.daily.weathercode[props.index] 
   );
   const weatherIcon = handleWeatherIcons(
     forecast.forecastData.daily.weathercode[props.index]

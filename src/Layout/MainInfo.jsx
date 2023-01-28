@@ -5,10 +5,16 @@ import classes from "./MainInfo.module.css";
 import OneDay from "../UI/OneDay.jsx";
 import Tomorrow from "../UI/Tomorrow.jsx";
 import useForecastData from "../Store/forecast-store.js";
+import {
+  Route,
+  Routes,
+  Switch,
+  Redirect,
+  BrowserRouter,
+} from "react-router-dom";
 
 export default function MainInfo(props) {
   const forecast = useForecastData();
-
 
   const forecastTimeArr = forecast.forecastData.daily?.time
 
@@ -20,28 +26,17 @@ export default function MainInfo(props) {
         index={i}
       />
     );
-  })
+  });
 
   return (
     <div>
       <ForecastButtons handler={props.viewHandler} />
       <div className={classes.information}>
-        {props.view === "oneday" && (
-          <OneDay
-            daily={"props.information"}
-            forecast={"props.forecast"}
-            background={"props.background"}
-            attribution={"props.attribution"}
-          />
-        )}
-        {props.view === "tomorrow" && (
-          <Tomorrow
-            forecast={"props.forecast"}
-            infos={"props.information"}
-            background={"props.background"}
-          />
-        )}
-        {props.view === "sevenday" && sevenDay} 
+        <Routes>
+          <Route path="homepage" element={<OneDay />} />
+          <Route path="tomorrow" element={<Tomorrow />} />
+          <Route path="week" element={sevenDay} />
+        </Routes>
       </div>
     </div>
   );

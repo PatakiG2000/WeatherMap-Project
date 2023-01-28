@@ -22,6 +22,12 @@ const useForecastData = create((set) => ({
     );
     set({ forecastData: await response.json() });
   },
+  fetchDatabyMap: async (positionMap) => {
+    const mapResponse = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${positionMap.lat}&longitude=${positionMap.lng}&&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,showers_sum,snowfall_sum,windspeed_10m_max&timezone=auto`
+    );
+    set({ forecastData: await mapResponse.json() });
+  },
 }));
 
 /* const useForecastDataZustand = create((set) => ({

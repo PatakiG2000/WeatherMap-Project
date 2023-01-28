@@ -25,7 +25,6 @@ export default function Searchbar(props) {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.length < 1) {
             globalState.fetchGeoData("London");
             setSearchBar("");

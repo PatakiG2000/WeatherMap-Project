@@ -16,30 +16,38 @@ export default function DataGetter() {
   const client = createClient(pexelkey);
   const mapData = useMapData();
 
+  React.useEffect(() => {
+    const query = weatherDate.geoData.name;
+    client.photos.search({ query, per_page: 1 }).then((photos) => {
+      backgroundImage.changeUrl(photos.photos[0]?.src.landscape);
+    });
+  }, [weatherDate]);
+
   ///imageot majd methoddal változtatni!
 
   React.useEffect(() => {
     if (mapData.latLng.lat > 0) {
       weatherDate.fetchGeoData([mapData.latLng.lat, mapData.latLng.lng]);
       forecastData.fetchForecastData([mapData.latLng.lat, mapData.latLng.lng]);
-  
-      const query = weatherDate.geoData.name;
-      if (query) {
-        client.photos.search({ query, per_page: 1 }).then((photos) => {
-          backgroundImage.changeUrl(photos.photos[0].src.landscape);
-        });
-      }
-    }
 
-    const query = location.geoData[0]?.name;
-    if (query) {
+      const query = weatherDate.geoData.name
+        ? weatherDate.geoData.name
+        : location.geoData[0]?.name;
+
       client.photos.search({ query, per_page: 1 }).then((photos) => {
-        backgroundImage.changeUrl(photos.photos[0].src.landscape);
+        backgroundImage.changeUrl(photos.photos[0]?.src.landscape);
       });
     }
 
+    const query = location.geoData[0]?.name
+      ? location.geoData[0]?.name
+      : weatherDate.geoData.name;
+
     weatherDate.fetchGeoData(location);
     forecastData.fetchForecastData(location);
+    client.photos.search({ query, per_page: 1 }).then((photos) => {
+      backgroundImage.changeUrl(photos.photos[0].src.landscape);
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, mapData]);

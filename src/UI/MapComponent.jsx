@@ -3,26 +3,29 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import useMapData from "../Store/map-data-store";
 import useGeoData from "../Store/geo-store";
+import useWeatherData from "../Store/oneday-weather-store";
+import useForecastData from "../Store/forecast-store";
 
 import L from "leaflet";
 
-const marker = "https://cdn-icons-png.flaticon.com/512/443/443025.png";
+const marker = "https://cdn-icons-png.flaticon.com/512/6153/6153497.png";
 
 const myIcon = new L.Icon({
   iconUrl: marker,
   iconRetinaUrl: marker,
-  popupAnchor: [-10, -0],
-  iconSize: [32, 45],
+  popupAnchor: [0, -20],
+  iconSize: [30, 30],
 });
 
 function DraggableMarker(props) {
+  const weatherStore = useWeatherData();
   const geoStore = useGeoData();
+  const forecast = useForecastData();
 
   const mapDataStore = useMapData();
 
   ///leaflet map
   const [draggable, setDraggable] = React.useState(false);
-  const [position, setPosition] = React.useState([12, 43]);
 
   const markerRef = React.useRef(null);
   const eventHandlers = React.useMemo(
@@ -37,12 +40,11 @@ function DraggableMarker(props) {
             .then((res) => res.json())
             .then((data) => {
               if (data.cod === "400") {
-                console.log(data.cod);
                 geoStore.fetchGeoData("London");
                 alert("something went wrong");
               } else {
-                setPosition(marker.getLatLng());
-                mapDataStore.changeLatLng(marker.getLatLng());
+                weatherStore.fetchDatabyMap(marker.getLatLng());
+                forecast.fetchDatabyMap(marker.getLatLng());
               }
             });
         }

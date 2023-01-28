@@ -30,11 +30,18 @@ const useWeatherData = create((set) => ({
         position[0] || position.geoData[0].lat
       }&lon=${
         position[1] || position.geoData[0].lon
-      }&appid=2653eef7dd1d751b628c8dc1bdbe14a3`
+      }&appid=feb00505bb1f18c6a87d08f4d0e94fef
+      `
     );
     set({ geoData: await response.json() });
   },
-  fetchDatabyMap: () => {},
+  fetchDatabyMap: async (positionMap) => {
+    const mapResponse = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${positionMap.lat}&lon=${positionMap.lng}&appid=feb00505bb1f18c6a87d08f4d0e94fef
+      `
+    );
+    set({ geoData: await mapResponse.json() });
+  },
 }));
 
 /* const useForecastDataZustand = create((set) => ({

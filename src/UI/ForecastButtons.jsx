@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./ForecastButtons.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function ForecastButtons(props) {
   //updating the app jsx view state
@@ -17,19 +18,20 @@ export default function ForecastButtons(props) {
           onClick={() => handleClick("oneday")}
           className={selected === "oneday" ? classes.active : '"false"'}
         >
-          Today
+          <NavLink to="/homepage" activeClassName="current">Today</NavLink>
         </button>
         <button
           onClick={() => handleClick("tomorrow")}
           className={selected === "tomorrow" ? classes.active : "false"}
         >
-          Tomorrow
+          <NavLink to="/tomorrow">Tomorrow</NavLink>
         </button>
+
         <button
           onClick={() => handleClick("sevenday")}
           className={selected === "sevenday" ? classes.active : "false"}
         >
-          Whole week
+          <NavLink to="/week">Whole week</NavLink>
         </button>
       </div>
       <div>
