@@ -10,7 +10,7 @@
   border: none;
   font-size: 25px;
   background-color: rgba(0, 0, 0, 0);
-  transition: 300ms;
+  transition: 500ms;
   color: gray;
   margin-right: 4px;
 }
@@ -21,4 +21,50 @@
 
 .active {
   color: white !important;
+}
+
+.container button a {
+  text-decoration: none;
+
+  font-size: 25px;
+  background-color: rgba(0, 0, 0, 0);
+  color: gray;
+}
+
+.container button a:hover {
+  color: rgba(255, 255, 255, 0.589);
+}
+
+.container button a:active {
+  color: rgb(255, 255, 255);
+}
+
+@media (max-width: 977px) {
+  .container button a {
+    font-size: 22px;
+  }
+  .forecastText {
+    font-size: 26px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 608px) {
+  .container button a {
+    font-size: 18px;
+  }
+  .forecastText {
+    font-size: 22px;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 536px) {
+  .container button a {
+    font-size: 14px;
+  }
+  .forecastText {
+    font-size: 18px;
+    margin-top: 18px;
+  }
 }

@@ -15,10 +15,22 @@ export default function OneDay(props) {
   const backgroundImagePexels = useBackgroundImage();
   const forecast = useForecastData();
 
-  const [weatherCode, setWeatherCode] = React.useState(0);
+  const [weatherCode, setWeatherCode] = React.useState(10);
+
+  console.log(forecast.forecastData.daily.weathercode[0]);
 
   if (forecast.forecastData.daily.weathercode && weatherCode === 0) {
-    setWeatherCode(forecast.forecastData.daily.weathercode[0]);
+    setWeatherCode(
+      forecast.forecastData.daily.weathercode[0]
+        ? forecast.forecastData.daily.weathercode[0]
+        : 10
+    );
+  }
+
+  if (!forecast) {
+    forecast.fetchForecastData([51.5073219, -0.1276474]);
+    weatherStore.fetchGeoData([51.5073219, -0.1276474]);
+    return;
   }
 
   ///calculating time to display the proper data
@@ -42,7 +54,7 @@ export default function OneDay(props) {
   const timezone = weatherStore.geoData.timezone;
 
   //ezt még megcsinálni
-/*   const weatherType = handleWeatherCode(weatherCode); */
+  /*   const weatherType = handleWeatherCode(weatherCode); */
   /* const weatherIcon = handleWeatherIcons(weatherCode); */
 
   function getTimestampInSeconds() {
@@ -58,7 +70,11 @@ export default function OneDay(props) {
         backgroundImage: `url(${
           backgroundImagePexels.imageUrl
             ? backgroundImagePexels.imageUrl
-            : handleForecastImage(weatherCode)
+            : handleForecastImage(
+                forecast.forecastData
+                  ? forecast?.forecastData.daily?.weathercode[0]
+                  : 10
+              )
         })`,
       }}
     >
@@ -69,14 +85,24 @@ export default function OneDay(props) {
               ? weatherStore.geoData.name
               : geoStore.geoData[0].name}
           </h1>
-          <h2 className="weather-type">{handleWeatherCode(weatherCode)}</h2>
+          <h2 className="weather-type">
+            {handleWeatherCode(
+              forecast.forecastData
+                ? forecast?.forecastData.daily?.weathercode[0]
+                : 10
+            )}
+          </h2>
           <h1 className="temperature">{temperature}</h1>
           <h4 className="feels-like">Feels like: {feelsLike}</h4>
           <h3>Wind: {weatherStore.geoData.wind.speed} km/h</h3>
         </div>
         <div className="main-icon">
           <img
-            src={ handleWeatherIcons(weatherCode)}
+            src={handleWeatherIcons(
+              forecast.forecastData
+                ? forecast?.forecastData?.daily.weathercode[0]
+                : 10
+            )}
             alt="Icon of weather"
             className="weather-icon"
           />

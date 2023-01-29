@@ -8,15 +8,16 @@ import useForecastData from "../Store/forecast-store.js";
 import {
   Route,
   Routes,
-  Switch,
-  Redirect,
-  BrowserRouter,
 } from "react-router-dom";
 
 export default function MainInfo(props) {
   const forecast = useForecastData();
 
-  const forecastTimeArr = forecast.forecastData.daily?.time
+  let forecastTimeArr = forecast.forecastData.daily?.time;
+
+  if (!forecastTimeArr) {
+    forecastTimeArr = [0, 0, 0, 0, 0, 0, 0];
+  }
 
   const sevenDay = forecastTimeArr.map((item, i) => {
     return (
@@ -33,6 +34,7 @@ export default function MainInfo(props) {
       <ForecastButtons handler={props.viewHandler} />
       <div className={classes.information}>
         <Routes>
+          <Route path="/" element={<OneDay />} exact />
           <Route path="homepage" element={<OneDay />} />
           <Route path="tomorrow" element={<Tomorrow />} />
           <Route path="week" element={sevenDay} />

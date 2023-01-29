@@ -6,6 +6,7 @@ import useBackgroundImage from "../Store/pexels-store";
 import useForecastData from "../Store/forecast-store";
 import useGeoData from "../Store/geo-store";
 import useWeatherData from "../Store/oneday-weather-store";
+import handleForecastImage from "../utils/forecastImage";
 
 export default function Tomorrow(props) {
   const backgroundImagePexels = useBackgroundImage();
@@ -20,12 +21,15 @@ export default function Tomorrow(props) {
     forecast.forecastData.daily.weathercode[1]
   );
 
-
   return (
     <div
       className="weather-container"
       style={{
-        backgroundImage: `url(${backgroundImagePexels.imageUrl} )`,
+        backgroundImage: `url(${
+          backgroundImagePexels.imageUrl
+            ? backgroundImagePexels.imageUrl
+            : handleForecastImage(forecast.forecastData.daily.weathercode[1])
+        } )`,
       }}
     >
       <div className="main-data">

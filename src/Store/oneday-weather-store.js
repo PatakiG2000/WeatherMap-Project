@@ -1,10 +1,6 @@
 import { create } from "zustand";
 
-/* const useWeatherData = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-})); */
+
 
 const useWeatherData = create((set) => ({
   geoData: {
@@ -40,16 +36,22 @@ const useWeatherData = create((set) => ({
       `https://api.openweathermap.org/data/2.5/weather?lat=${positionMap.lat}&lon=${positionMap.lng}&appid=feb00505bb1f18c6a87d08f4d0e94fef
       `
     );
-    set({ geoData: await mapResponse.json() });
+    const response = await mapResponse.json();
+    if (response.cod === "400") {
+      const fetchingAgain = async (positionMap) => {
+        const mapResponse = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=51.5073219&lon=-0.1276474&appid=feb00505bb1f18c6a87d08f4d0e94fef
+          `
+        );
+        const response = await mapResponse.json();
+        set({ geoData: response });
+      };
+      fetchingAgain();
+    } else {
+      set({ geoData: response });
+    }
   },
 }));
 
-/* const useForecastDataZustand = create((set) => ({
-  weatherData: {},
-  fetch: async (forecastURL) => {
-    const response = await fetch(forecastURL);
-    set({ weatherData: await response.json() });
-  },
-})); */
 
 export default useWeatherData;

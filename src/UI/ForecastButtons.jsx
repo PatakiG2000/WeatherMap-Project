@@ -35,7 +35,7 @@ export default function ForecastButtons(props) {
         </button>
       </div>
       <div>
-        <h1>Forecast </h1>
+        <h1 className={classes.forecastText} >Forecast </h1>
       </div>
     </div>
   );

@@ -16,41 +16,70 @@ export default function DataGetter() {
   const client = createClient(pexelkey);
   const mapData = useMapData();
 
+  const [userLocation, setUserLocation] = React.useState();
+
   React.useEffect(() => {
     const query = weatherDate.geoData.name;
     client.photos.search({ query, per_page: 1 }).then((photos) => {
       backgroundImage.changeUrl(photos.photos[0]?.src.landscape);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherDate]);
 
   ///imageot majd methoddal változtatni!
 
   React.useEffect(() => {
-    if (mapData.latLng.lat > 0) {
-      weatherDate.fetchGeoData([mapData.latLng.lat, mapData.latLng.lng]);
-      forecastData.fetchForecastData([mapData.latLng.lat, mapData.latLng.lng]);
+    navigator.permissions.query({ name: "geolocation" }).then((res) => {
+      setUserLocation(res.state);
+    });
+    if (
+      navigator.geolocation &&
+      weatherDate.geoData.main.temp === "" &&
+      userLocation !== "denied"
+    ) {
+      navigator.geolocation.getCurrentPosition((location) => {
+        if (location) {
+          console.log(location.coords.latitude);
+          weatherDate.fetchGeoData([
+            location.coords.latitude,
+            location.coords.longitude,
+          ]);
+          forecastData.fetchForecastData([
+            location.coords.latitude,
+            location.coords.longitude,
+          ]);
+        }
+      });
+    } else {
+      if (mapData.latLng.lat > 0) {
+        weatherDate.fetchGeoData([mapData.latLng.lat, mapData.latLng.lng]);
+        forecastData.fetchForecastData([
+          mapData.latLng.lat,
+          mapData.latLng.lng,
+        ]);
 
-      const query = weatherDate.geoData.name
-        ? weatherDate.geoData.name
-        : location.geoData[0]?.name;
+        const query = weatherDate.geoData.name
+          ? weatherDate.geoData.name
+          : location.geoData[0]?.name;
 
+        client.photos.search({ query, per_page: 1 }).then((photos) => {
+          backgroundImage.changeUrl(photos.photos[0]?.src.landscape);
+        });
+      }
+
+      const query = location.geoData[0]?.name
+        ? location.geoData[0]?.name
+        : weatherDate.geoData.name;
+
+      weatherDate.fetchGeoData(location);
+      forecastData.fetchForecastData(location);
       client.photos.search({ query, per_page: 1 }).then((photos) => {
-        backgroundImage.changeUrl(photos.photos[0]?.src.landscape);
+        backgroundImage.changeUrl(photos.photos[0].src.landscape);
       });
     }
 
-    const query = location.geoData[0]?.name
-      ? location.geoData[0]?.name
-      : weatherDate.geoData.name;
-
-    weatherDate.fetchGeoData(location);
-    forecastData.fetchForecastData(location);
-    client.photos.search({ query, per_page: 1 }).then((photos) => {
-      backgroundImage.changeUrl(photos.photos[0].src.landscape);
-    });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location, mapData]);
+  }, [location, mapData, userLocation]);
 
   return <></>;
 }

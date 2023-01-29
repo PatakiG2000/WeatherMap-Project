@@ -1,10 +1,6 @@
 import { create } from "zustand";
 
-/* const useWeatherData = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-})); */
+
 
 const useGeoData = create((set) => ({
   geoData: {
@@ -22,12 +18,6 @@ const useGeoData = create((set) => ({
   },
 }));
 
-/* const useForecastDataZustand = create((set) => ({
-  weatherData: {},
-  fetch: async (forecastURL) => {
-    const response = await fetch(forecastURL);
-    set({ weatherData: await response.json() });
-  },
-})); */
+
 
 export default useGeoData;
