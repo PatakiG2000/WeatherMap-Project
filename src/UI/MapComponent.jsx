@@ -37,7 +37,7 @@ function DraggableMarker(props) {
           )
             .then((res) => res.json())
             .then((data) => {
-              console.log(marker.getLatLng());
+          
               if (data.cod === "400" || data.error) {
                 geoStore.fetchGeoData("London");
                 weatherStore.fetchDatabyMap({
@@ -85,7 +85,7 @@ function DraggableMarker(props) {
 
 export default function MapChart() {
   const forecast = useForecastData();
-  console.log(forecast);
+ 
 
   return (
     <div className="map" id="map">

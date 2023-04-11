@@ -1,14 +1,11 @@
 import React from "react";
 import ForecastButtons from "../UI/ForecastButtons.jsx";
 import ForecastCards from "../UI/ForecastCards.jsx";
-import classes from "./MainInfo.module.css";
+
 import OneDay from "../UI/OneDay.jsx";
 import Tomorrow from "../UI/Tomorrow.jsx";
 import useForecastData from "../Store/forecast-store.js";
-import {
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 export default function MainInfo(props) {
   const forecast = useForecastData();
@@ -30,16 +27,19 @@ export default function MainInfo(props) {
   });
 
   return (
-    <div>
+    <>
       <ForecastButtons handler={props.viewHandler} />
-      <div className={classes.information}>
+      <div className="information">
         <Routes>
           <Route path="/" element={<OneDay />} exact />
           <Route path="homepage" element={<OneDay />} />
           <Route path="tomorrow" element={<Tomorrow />} />
-          <Route path="week" element={sevenDay} />
+          <Route
+            path="week"
+            element={<div className="sevenday-view">{sevenDay}</div>}
+          />
         </Routes>
       </div>
-    </div>
+    </>
   );
 }

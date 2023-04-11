@@ -1,5 +1,5 @@
 import React from "react";
-import "./OneDay.css";
+
 import handleWeatherCode from "../utils/weatherCode";
 import handleWeatherIcons from "../utils/weatherIcons";
 import useWeatherData from "../Store/oneday-weather-store";
@@ -16,8 +16,6 @@ export default function OneDay(props) {
   const forecast = useForecastData();
 
   const [weatherCode, setWeatherCode] = React.useState(10);
-
-  console.log(forecast.forecastData.daily.weathercode[0]);
 
   if (forecast.forecastData.daily.weathercode && weatherCode === 0) {
     setWeatherCode(
@@ -115,7 +113,7 @@ export default function OneDay(props) {
           <h2 className="daily-data">
             Daily max: {maxTemp}
             <span className="attribute">
-              Background image by: {"props.attribution"}, Icons by: FlatIcon
+              Background image by: {"Pexels"}, Icons by: FlatIcon
             </span>
           </h2>
         </div>

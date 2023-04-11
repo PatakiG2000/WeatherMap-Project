@@ -1,5 +1,5 @@
 import React from "react";
-import "./OneDay.css";
+
 import handleWeatherCode from "../utils/weatherCode";
 import handleWeatherIcons from "../utils/weatherIcons";
 import useBackgroundImage from "../Store/pexels-store";

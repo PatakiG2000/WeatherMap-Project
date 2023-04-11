@@ -39,7 +39,7 @@ export default function DataGetter() {
     ) {
       navigator.geolocation.getCurrentPosition((location) => {
         if (location) {
-          console.log(location.coords.latitude);
+       
           weatherDate.fetchGeoData([
             location.coords.latitude,
             location.coords.longitude,
